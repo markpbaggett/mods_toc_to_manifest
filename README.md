@@ -5,7 +5,7 @@ to automate the creation of structures in a presentation manifest.
 
 ## The Example
 
-Generate.py looks at a manifest.json file and an assumed related descriptive metadata file that we assume describes the
+Generate.py looks at a manifest.json file and an assumed related descriptive metadata file that we presume describes the
 digital object. The sample MODS record has table of contents data that looks like this:
 
 ```xml
@@ -14,7 +14,10 @@ digital object. The sample MODS record has table of contents data that looks lik
 
 ```
 
-Then we split this data into a list of tuples with the label of the section and it's corresponding page number. 
+Then we split this data into a list of tuples with the label of the section and it's corresponding page number.
 
-Finally, this data is leveraged to create structures that correspond to each page.
+We then use the corresponding page number for each page number to match it to a canvas in the manifest file.
+
+Finally, we use this data to build a IIIF structure and replace the `structures` key in the originating manifest with
+this.
  
