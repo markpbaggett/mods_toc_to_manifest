@@ -51,6 +51,8 @@ class PresentationManifest:
                     )
                 )
             return self.__final_structures(toc, additional_structures)
+        else:
+            return []
 
     @staticmethod
     def __add_member(label, identifier):
@@ -75,7 +77,13 @@ class PresentationManifest:
     def __inject_structures(self):
         new_manifest = self.manifest
         new_manifest["structures"] = self.structures
-        return json.dumps(new_manifest)
+        return json.dumps(
+            new_manifest, sort_keys=True, indent=4, separators=(",", ": ")
+        )
+
+    def serialize_manifest(self):
+        with open(self.manifest_path, "w") as manifest:
+            manifest.write(self.json)
 
 
 if __name__ == "__main__":
@@ -83,4 +91,4 @@ if __name__ == "__main__":
         "samples/manifest.json",
         "samples/agrtfhs_3303.xml",
     )
-    print(x.json)
+    x.serialize_manifest()
