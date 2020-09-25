@@ -91,5 +91,4 @@ if __name__ == "__main__":
         "samples/manifest.json",
         "samples/agrtfhs_3303.xml",
     )
-    print(x.sections)
     x.serialize_manifest()
