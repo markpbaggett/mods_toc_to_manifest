@@ -25,7 +25,7 @@ class PresentationManifest:
             try:
                 toc = xmltodict.parse(mods)["mods"]["tableOfContents"].split(";")
                 for section in toc:
-                    sections.append((section.split(" | ")[0], section.split(" | ")[1]))
+                    sections.append((section.split(" | ")[0].strip(), section.split(" | ")[1]))
                 return sections
             except KeyError:
                 return sections
@@ -91,4 +91,5 @@ if __name__ == "__main__":
         "samples/manifest.json",
         "samples/agrtfhs_3303.xml",
     )
+    print(x.sections)
     x.serialize_manifest()
