@@ -80,7 +80,7 @@ class PresentationManifest:
 
 if __name__ == "__main__":
     x = PresentationManifest(
-        "/home/mark/iiif-workshop/presentation_manifests/manifest_toc.json",
+        "samples/manifest.json",
         "samples/agrtfhs_3303.xml",
     )
     print(x.json)
